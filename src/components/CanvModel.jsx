@@ -16,7 +16,7 @@ class CanvModel extends Component {
 
     //Create Scene
     scene = new BABYLON.Scene(this.engine);
-    scene.clearColor = new BABYLON.Color3.White();
+    // scene.clearColor = new BABYLON.Color3.White();
 
     //--Light---
     this.addLight();
@@ -75,7 +75,7 @@ class CanvModel extends Component {
 
     // This attaches the camera to the canvas
     camera.attachControl(this.canvas, true);
-    camera.setPosition(new BABYLON.Vector3(5, 5, 5));
+    // camera.setPosition(new BABYLON.Vector3(5, 5, 5));
   };
 
 
@@ -99,7 +99,7 @@ class CanvModel extends Component {
   render() {
     return (
       <canvas
-        style={{ width: window.innerWidth, height: window.innerHeight }}
+        style={{ width: window.innerWidth, height: "500px" }}
         ref={canvas => {
           this.canvas = canvas;
         }}

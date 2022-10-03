@@ -4,7 +4,7 @@ import "babylonjs-loaders";
 
 var scene;
 
-class BabylonScene extends Component {
+class PhotoFrame extends Component {
   constructor(props) {
     super(props);
     this.state = { useWireFrame: false, shouldAnimate: true };
@@ -16,7 +16,7 @@ class BabylonScene extends Component {
 
     //Create Scene
     scene = new BABYLON.Scene(this.engine);
-    scene.clearColor = BABYLON.Color3.White();
+    // scene.clearColor = BABYLON.Color3.White();
 
     //--Light---
     this.addLight();
@@ -70,29 +70,25 @@ addCamera = () => {
 
   /*** Add Models */
   addModels = () => {
-    BABYLON.SceneLoader.ImportMesh("",
+
+    var mat = new BABYLON.StandardMaterial("mat", scene);
+    var texture = new BABYLON.Texture("https://i.imgur.com/vxH5bCg.jpg", scene);
+    mat.diffuseTexture = texture;
+
+        BABYLON.SceneLoader.ImportMeshAsync("",
     "https://raw.githubusercontent.com/pavankulkarni11/3D_Meshes/main/",
-    "wall_frame.glb", this.scene, function (newMeshes) {
+    "wall_frame.glb", scene).then((frame) => {
+    const meshes = frame.meshes;
+        meshes[1].material = mat;
 
-        console.log(newMeshes)
+    }); 
 
-        const newTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/floor.png", this.scene)
-        
-  
-        console.log(scene.getMeshByName("Plane").material)
-        const mesh = scene.getMeshByName("Plane");
-
-        const material = new BABYLON.StandardMaterial("m", scene);
-        material.diffuseTexture = newTexture;
-        mesh.material = material;
-
-        scene.createDefaultEnvironment({createGround:false, createSkybox:false})
-    });  
   };
+  
   render() {
     return (
       <canvas
-        style={{ width: window.innerWidth, height: window.innerHeight }}
+        style={{ width: window.innerWidth, height: "500px" }}
         ref={canvas => {
           this.canvas = canvas;
         }}
@@ -100,4 +96,6 @@ addCamera = () => {
     );
   }
 }
-export default BabylonScene;
+export default PhotoFrame;
+
+// wall_frame.glb

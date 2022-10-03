@@ -16,7 +16,7 @@ class Mug extends Component {
 
     //Create Scene
     scene = new BABYLON.Scene(this.engine);
-    scene.clearColor = new BABYLON.Color3.Gray();
+    // scene.clearColor = new BABYLON.Color3.Gray();
 
     //--Light---
     this.addLight();
@@ -50,8 +50,6 @@ class Mug extends Component {
 
     var light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, -1, 0), scene);
     
-    // var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, -1, 0), scene);
-    // light1.intensity = 0.5;
   };
 
   /* Add Camera */
@@ -85,7 +83,7 @@ class Mug extends Component {
   render() {
     return (
       <canvas
-        style={{ width: window.innerWidth, height: window.innerHeight }}
+        style={{ width: window.innerWidth, height: "500px" }}
         ref={canvas => {
           this.canvas = canvas;
         }}

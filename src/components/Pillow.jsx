@@ -105,7 +105,7 @@ class Pillow extends Component {
   render() {
     return (
       <canvas
-        style={{ width: window.innerWidth, height: window.innerHeight }}
+        style={{ width: window.innerWidth, height: "500px" }}
         ref={canvas => {
           this.canvas = canvas;
         }}
